@@ -2,11 +2,11 @@ A telescope picker for Jujutsu repos
 
 # Setup
 
-Require `jj_telescope` in your nvim package manager:
+Require `telescope-jj.nvim` in your nvim package manager:
 
 Using [lazy.nvim](https://github.com/folke/lazy.nvim)
 ```lua
-    "zschreur/jj_telescope",
+"zschreur/telescope-jj.nvim",
 ```
 
 Load the extension in your config with:
