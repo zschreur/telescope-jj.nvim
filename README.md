@@ -14,6 +14,11 @@ Load the extension in your config with:
 telescope.load_extension "jj"
 ```
 
+Call with:
+```lua
+telescope.extensions.jj.files(opts) -- opts is optional telescope picker options
+```
+
 The example below includes a fallback to the default `git_files` picker if the `jj` picker fails.
 ```lua
 local telescope = require "telescope"
@@ -22,7 +27,7 @@ local builtin = require "telescope.builtin"
 telescope.load_extension "jj"
 
 local vcs_picker = function(opts)
-    local jj_pick_status, jj_res = pcall(telescope.extensions.jj.pick, opts);
+    local jj_pick_status, jj_res = pcall(telescope.extensions.jj.files, opts);
     if jj_pick_status then
         return
     end

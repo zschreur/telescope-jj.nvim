@@ -27,6 +27,6 @@ local jj_files = function(opts)
     }):find()
 end
 
-M.pick = jj_files
+M.files = jj_files
 
 return M
