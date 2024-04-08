@@ -11,5 +11,5 @@ end
 
 return {
     get_jj_root = get_jj_root,
-    get_os_command_output = ts_utils.get_os_command_output
+    get_os_command_output = ts_utils.get_os_command_output,
 }
