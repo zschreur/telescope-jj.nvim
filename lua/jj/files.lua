@@ -11,7 +11,7 @@ return function(opts)
         .new(opts, {
             prompt_title = "Jujutsu Files",
             finder = finders.new_table({
-                results = utils.get_os_command_output(cmd, opts.cwd),
+                results = utils.get_os_command_output(cmd),
             }),
             previewer = conf.file_previewer(opts),
             sorter = conf.file_sorter(opts),
