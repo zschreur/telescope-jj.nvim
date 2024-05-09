@@ -1,6 +1,7 @@
 local finders = require("telescope.finders")
 local pickers = require("telescope.pickers")
 local conf = require("telescope.config").values
+local make_entry = require("telescope.make_entry")
 local utils = require("jj.utils")
 
 return function(opts)
@@ -10,8 +11,10 @@ return function(opts)
     pickers
         .new(opts, {
             prompt_title = "Jujutsu Files",
+            __locations_input = true,
             finder = finders.new_table({
-                results = utils.get_os_command_output(cmd),
+            	results = utils.get_os_command_output(cmd),
+                entry_maker = opts.entry_maker or make_entry.gen_from_file(opts),
             }),
             previewer = conf.file_previewer(opts),
             sorter = conf.file_sorter(opts),
