@@ -13,7 +13,7 @@ return function(opts)
             prompt_title = "Jujutsu Files",
             __locations_input = true,
             finder = finders.new_table({
-            	results = utils.get_os_command_output(cmd),
+                results = utils.get_os_command_output(cmd),
                 entry_maker = opts.entry_maker or make_entry.gen_from_file(opts),
             }),
             previewer = conf.file_previewer(opts),
