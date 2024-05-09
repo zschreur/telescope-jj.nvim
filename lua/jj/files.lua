@@ -4,9 +4,14 @@ local conf = require("telescope.config").values
 local utils = require("jj.utils")
 
 return function(opts)
-    local cmd = { "jj", "files", "--no-pager" }
     opts = opts or {}
     opts.cwd = opts.cwd or utils.get_jj_root()
+    if opts.cwd == nil then
+        return
+    end
+
+    local cmd = { "jj", "files", "--no-pager" }
+
     pickers
         .new(opts, {
             prompt_title = "Jujutsu Files",
