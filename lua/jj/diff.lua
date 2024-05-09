@@ -11,17 +11,24 @@ return function(opts)
         return
     end
 
-    local cmd = { "jj", "files", "--no-pager" }
+    local cmd = { "jj", "diff", "--summary", "--no-pager" }
+    local cmd_output = utils.get_os_command_output(cmd)
+
+    local results = {}
+    for _, str in ipairs(cmd_output) do
+        local word = string.match(str, "^. (.*)")
+        table.insert(results, word)
+    end
 
     pickers
         .new(opts, {
-            prompt_title = "Jujutsu Files",
+            prompt_title = "Jujutsu Diff",
             __locations_input = true,
             finder = finders.new_table({
-                results = utils.get_os_command_output(cmd),
+                results = results,
                 entry_maker = opts.entry_maker or make_entry.gen_from_file(opts),
             }),
-            previewer = conf.file_previewer(opts),
+            previewer = utils.diff_previwer.new(opts),
             sorter = conf.file_sorter(opts),
         })
         :find()

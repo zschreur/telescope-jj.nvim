@@ -11,14 +11,22 @@ return function(opts)
         return
     end
 
-    local cmd = { "jj", "files", "--no-pager" }
+    local cmd = { "jj", "resolve", "--list" }
+    local cmd_output = utils.get_os_command_output(cmd)
+
+    local results = {}
+    for _, str in ipairs(cmd_output) do
+        -- https://github.com/martinvonz/jj/blob/9a5b001d58353afb7ea6cb894c22d80878b811ae/cli/src/cli_util.rs#L1778
+        local word = string.match(str, "^(.-)%s%s%s")
+        table.insert(results, word)
+    end
 
     pickers
         .new(opts, {
-            prompt_title = "Jujutsu Files",
+            prompt_title = "Jujutsu Conflicts",
             __locations_input = true,
             finder = finders.new_table({
-                results = utils.get_os_command_output(cmd),
+                results = results,
                 entry_maker = opts.entry_maker or make_entry.gen_from_file(opts),
             }),
             previewer = conf.file_previewer(opts),
