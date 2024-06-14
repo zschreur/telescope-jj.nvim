@@ -17,7 +17,7 @@ return function(opts)
     local results = {}
     for _, str in ipairs(cmd_output) do
         -- https://github.com/martinvonz/jj/blob/9a5b001d58353afb7ea6cb894c22d80878b811ae/cli/src/cli_util.rs#L1778
-        local word = string.match(str, "^(.-)%s+%d+%-sided conflict$")
+        local word = string.match(str, "^(.-)%s+%d+%-sided conflict")
         table.insert(results, word)
     end
 
