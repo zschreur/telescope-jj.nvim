@@ -12,7 +12,7 @@ return function(opts)
     end
 
     local cmd = { "jj", "diff", "--summary", "--no-pager" }
-    local cmd_output = utils.get_os_command_output(cmd)
+    local cmd_output = utils.get_os_command_output(cmd, opts.cwd)
 
     local results = {}
     for _, str in ipairs(cmd_output) do
