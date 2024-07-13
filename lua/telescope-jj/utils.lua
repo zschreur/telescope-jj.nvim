@@ -6,7 +6,8 @@ local putils = require("telescope.previewers.utils")
 local get_jj_root = function()
     local root, ret = ts_utils.get_os_command_output({ "jj", "root" })
     if ret == 0 then
-        return root[1]
+        local path = vim.uv.fs_realpath(root[1])
+        return path
     end
 
     error("jj root not found")
