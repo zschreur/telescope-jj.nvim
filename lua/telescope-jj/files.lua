@@ -11,7 +11,7 @@ return function(opts)
         return
     end
 
-    local cmd = { "jj", "files", "--no-pager" }
+    local cmd = { "jj", "file", "list", "--no-pager" }
 
     pickers
         .new(opts, {

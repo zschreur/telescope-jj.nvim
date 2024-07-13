@@ -11,21 +11,15 @@ return function(opts)
         return
     end
 
-    local cmd = { "jj", "diff", "--summary", "--no-pager" }
+    local cmd = { "jj", "diff", "--name-only", "--no-pager" }
     local cmd_output = utils.get_os_command_output(cmd, opts.cwd)
-
-    local results = {}
-    for _, str in ipairs(cmd_output) do
-        local word = string.match(str, "^. (.*)")
-        table.insert(results, word)
-    end
 
     pickers
         .new(opts, {
             prompt_title = "Jujutsu Diff",
             __locations_input = true,
             finder = finders.new_table({
-                results = results,
+                results = cmd_output,
                 entry_maker = opts.entry_maker or make_entry.gen_from_file(opts),
             }),
             previewer = utils.diff_previwer.new(opts),
