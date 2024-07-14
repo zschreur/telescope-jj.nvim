@@ -3,12 +3,29 @@
 A Telescope picker for Jujutsu repos.
 
 ## Setup
-
-Require `telescope-jj.nvim` in your Neovim package manager:
+- Follow setup instructions for telescope: https://github.com/nvim-telescope/telescope.nvim?tab=readme-ov-file#installation
+- Require `telescope-jj.nvim`
 
 Using [lazy.nvim](https://github.com/folke/lazy.nvim)
 ```lua
-"zschreur/telescope-jj.nvim",
+{ "nvim-lua/plenary.nvim", lazy = true }
+```
+
+Using [vim-plug](https://github.com/junegunn/vim-plug)
+```lua
+Plug 'zschreur/telescope-jj.nvim'
+```
+
+Using [dein](https://github.com/Shougo/dein.vim)
+```lua
+call dein#add('zschreur/telescope-jj.nvim')
+```
+
+Using [packer.nvim](https://github.com/wbthomason/packer.nvim)
+```lua
+use {
+  'zschreur/telescope-jj.nvim'
+}
 ```
 
 Load the extension in your config with:
