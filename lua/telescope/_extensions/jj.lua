@@ -15,7 +15,7 @@ return telescope.register_extension({
         end
 
         local obj = vim.system({ "jj", "--version" }, { text = true }):wait()
-        for major, minor, patch in string.gmatch(obj.stdout, "jj (%d+).(%d+).(%d+)") do
+        for major, minor, patch in string.gmatch(obj.stdout, "jj (%d+)%.(%d+)%.(%d+)") do
             if not (tonumber(major) == 0 and tonumber(minor) >= 19) then
                 vim.health.warn("requires jj version 0.19.0 or greater")
                 vim.health.info("found jj version: " .. major .. "." .. minor .. "." .. patch)
