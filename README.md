@@ -8,7 +8,7 @@ A Telescope picker for Jujutsu repos.
 
 Using [lazy.nvim](https://github.com/folke/lazy.nvim)
 ```lua
-{ "nvim-lua/plenary.nvim", lazy = true }
+'zschreur/telescope-jj.nvim'
 ```
 
 Using [vim-plug](https://github.com/junegunn/vim-plug)
